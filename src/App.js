@@ -1,8 +1,17 @@
 import logo from './logo.svg';
 import './App.css'
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 2000, // Animation duration in milliseconds (3 seconds)
+      // Other AOS configuration options can be added here
+    });
+  }, []);
 
   const skilsSet = ['HTML', 'CSS', 'Javascript', 'React', 'React Native', 'Tailwind', 'Chakra UI', 'Material UI', 'Redux Toolkit', 'Redux', 'Tailwind CSS', 'Python', 'Supabase']
   const experience= [
@@ -78,7 +87,7 @@ function App() {
         </div>
         <a target='_blank' href={require('./assests/babatundeCV.pdf')} className='portfolioResume'>RESUME</a>
       </div>
-      <section ref={introRef} className='portfolioSec1'>
+      <section data-aos='zoom-in' ref={introRef} className='portfolioSec1'>
         <img src={require('./assests/circleProfile.png')} className='circleHeader' />
         <div className='userPicAbout'>
           <img src={require('./assests/me.jpg')} className='individualPic'/>
@@ -100,11 +109,11 @@ function App() {
       </section>
         <section ref={skillsRef} className='portfolioSkillSets'>
           <p className='skillSetsText'>SKILL SETS</p>
-          <div className='skillImgAndName'>
+          <div data-aos='fade-right' className='skillImgAndName'>
             <div className='SkillDescText'>
               {skilsSet.map ((each, index)=><p key={index} className='SkillTextWord'>{each}</p>)}
             </div>
-            <div>
+            <div data-aos='fade-left'>
             <img src={require('./assests/react.png')} className='ImgSkill' />
             <img src={require('./assests/saas.png')} className='ImgSkill' />
             <img src={require('./assests/dots.png')} className='Imgdots' />
@@ -117,7 +126,7 @@ function App() {
           <p className='skillSetsText'>EXPERIENCE</p>
           <div className='experienceHolder'>
             {experience?.map((each, index)=>(
-            <div key={index} className='experienceHolder_div'>
+            <div  data-aos="flip-left" key={index} className='experienceHolder_div'>
               <p className='experienceCompany_Role'>{each?.name}</p>
               <p className='experienceCompany'>{each?.company}</p>
               <p className='experienceCompany_startDate'>{each?.date}</p>
@@ -139,10 +148,10 @@ function App() {
           <p className='skillSetsText'>PROJECTS</p>
           {videoPortfolioExperience?.map((each, index)=>
           <div key={index} className='videoAndPortfolio'>
-          <video className='videoPortfolio' autoPlay playsInline muted loop>
+          <video  data-aos="fade-right" className='videoPortfolio' autoPlay playsInline muted loop>
             <source  src={each?.video} type="video/mp4"/>
           </video>
-          <div className='descVideoPortfolio'>
+          <div  data-aos="fade-left" className='descVideoPortfolio'>
           <p className='videoTitle'>{each?.name}</p>
           <p className='descVideoTitle'>{each?.descTitle}</p>
           <div className='stacksUsedVideoPorfolio'>

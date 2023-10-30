@@ -267,3 +267,42 @@
   --border-size: 3px;
   --border-angle: 0turn;
 }
+
+@media (max-width: 900px){
+  .skillImgAndName{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .SkillDescText{
+    max-width: 85%;
+    margin-bottom: 20px;
+  }
+  .videoAndPortfolio{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .videoPortfolio{
+    margin: 10px 0;
+    width: 85%;
+  }
+  .descVideoPortfolio{
+    width: 85%;
+  }
+  .userPortfolioTextDesc{
+    width: 85%;
+  }
+  .experienceHolder_div{
+    max-width: 85%;
+  }
+  .innerSkillsDiv{
+    flex-wrap: wrap;
+  }
+  .portfolioSkillButton{
+    margin-top: 10px;
+  }
+  .userPortfolioName{
+    text-align: center;
+  }
+}
