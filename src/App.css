@@ -1,38 +1,269 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;600&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  margin: 0;
+  padding: 0;
 }
+.portfolioBg{
+  background-color: #26252D;
+  min-height: 100vh;
+  padding: 20px ;
+}
+.portfolioHeader{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+.portfolioResume{
+  color: #26252D;
+  background-color: white;
+  padding: 10px 15px;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #fff,
+      #fff 50%,
+      #fff
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  animation: bg-spin 3s linear infinite;
+  --border-size: 3px;
+  --border-angle: 0turn;
+}
+.portfolioResume:hover {
+  animation-play-state: paused;
+}
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.circleHeader{
+  width: 40%;
+  position: absolute;
+  top: -5%;
+  left: 30%;
+}
+.individualPic{
+  width: 230px;
+  height: 280px;
+  border-radius: 50%;
+}
+.userPicAbout{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-direction: column;
+}
+.userPortfolioName{
+  font-family: Prompt, sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  margin-top: 10px;
+}
+.portfolioSec1{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.usePortfolioDesc{
+  font-size: 20px;
+  color: #e5e5e5;
 }
+.userPortfolioTextDesc{
+  margin-top: 20px;
+  width: 700px;
+  text-align: center;
+  color: #e5e5e5;
+  font-size: 13px;
+  font-family: Prompt, sans-serif;
+}
+.portfolioSkillsDiv{
+  margin-top: 20px;
+  padding: 15px;
+  /* position: relative !important; */
+}
+.portfolioSkillButton{
+  border: none;
+  padding: 15px 20px;
+  font-size: 17px;
+  border-radius: 30px;
+  background-color: rgba(104, 69, 205, .1);
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.innerSkillsDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky !important;
+  top: 0;
+}
+.portfolioSkillSets{
+  margin-top: 30px;
+  position: relative;
+}
+.portfolioExperience{
+  margin-top: 80px;
+}
+.skillSetsText{
+  text-align: center;
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: Prompt, sans-serif;
+}
+.skillImgAndName{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.ImgSkill{
+  width: 110px;
+  margin-right: 25px;
+}
+.SkillDescText{
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.SkillTextWord{
+  margin-top: 10px;
+  margin-right: 10px;
+  color: #fefefe;
+  letter-spacing: 0;
+  font-family: Prompt, sans-serif;
+  font-size: 16px;
+  font-weight: 600;    background-color: #4a4258;
+  border-radius: 100px;
+  flex: 0 auto;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 6px 16px;
+  display: flex;
+}
+.Imgdots{
+  position: absolute;
+  bottom: -30px2;
+  width: 80px;
+}
+.experienceHolder{
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.experienceHolder_div{
+  padding: 30px 30px 50px;
+  border-radius: 10px;
+  background-color: #4A4258;
+  max-width: 467px;
+  position: relative;
+  z-index: 100;
+}
+.experienceCompany_Role{
+  font-size: 22px;
+  font-weight: 550;
+  font-family: Prompt, sans-serif;
+  color: white;
+  max-width: 350px;
+}
+.experienceCompany{
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+.experienceCompany_startDate{
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+.experience_codeBlock{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 100px;
+  height: 100px;
+}
+.videoPortfolio{
+  width: 500px;
+  border-radius: 20px;
+}
+.videoAndPortfolio{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.descVideoPortfolio{
+  width: 40%;
+  color: white;
+}
+.videoTitle{
+  font-size: 20px;
+  color: white;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.descVideoTitle{
+  width: 70%;
+}
+.stacksUsedVideoPorfolio{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+.stackPortfolio{
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  background-color: #4A4258;
+  border-radius: 25px;
+  margin-right: 20px;
+}
+.linkToVideoPortfolio{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #6845CD;
+  padding: 10px 25px;
+  margin-right: 20px;
+  border-radius: 10px;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #6845CD,
+      #6845CD 50%,
+      #6845CD
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  animation: bg-spin 3s linear infinite;
+  --border-size: 3px;
+  --border-angle: 0turn;
 }
