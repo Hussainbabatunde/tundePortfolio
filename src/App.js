@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -77,9 +77,58 @@ function App() {
     skillsRef.current?.scrollIntoView({behavior: 'smooth'});
   };
 
+  // let mainRef = useRef(null);
+
+  const innerSkillsDiv = document.querySelector('.innerSkillsDiv');
+  const [isSticky, setIsSticky] = useState (false);
+  let mainRef = document.querySelector('[data-aos="zoom-in"]');
+  const [activeSection, setActiveSection] = useState('intro');
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY >= mainRef.offsetTop) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const introOffset = introRef.current.offsetTop;
+    const skillsOffset = skillsRef.current.offsetTop;
+    const experienceOffset = ref.current.offsetTop;
+    const projectOffset = projectRef.current.offsetTop;
+
+    if (scrollY < skillsOffset) {
+      setActiveSection('intro');
+    } else if (scrollY >= skillsOffset && scrollY < experienceOffset) {
+      setActiveSection('skills');
+    } else if (scrollY >= experienceOffset && scrollY < projectOffset) {
+      setActiveSection('experience');
+    } else if (scrollY >= projectOffset) {
+      setActiveSection('projects');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
 
   return (
-    <div className="portfolioBg">
+    <div ref={mainRef} className="portfolioBg">
       <div className='portfolioHeader'>
         <div>
           <a target='_blank' href='https://github.com/Hussainbabatunde'><img width='25px' src={require('./assests/github.png')} /></a>
@@ -97,23 +146,27 @@ function App() {
           <p>Welcome to my Portfolio! I'm Babatunde Hussain a graduate 🎓 from the department of Electrical and Electronics Engineering, University of Lagos. An Experienced frontend developer specializing in web and mobile development, committed to creating user-friendly and captivating applications. Dedicated to continuous improvement and constantly seeking opportunities to enhance skills and expertise.</p>
           <p style={{marginTop:'10px'}}>A skilled problem solver, employing innovative thinking for optimal solutions. Extensive project experience that has refined abilities and honed skills. Strong team player, promoting collaboration and effective communication. Proficient at conveying complex technical concepts clearly and concisely.</p>
         </div>
-        <div className='portfolioSkillsDiv'>
-          <div className='innerSkillsDiv'>
-          <button onClick={handleIntroRefClick} className='portfolioSkillButton'>INTRO</button>
-          <button onClick={handleSkillsRefClick} className='portfolioSkillButton'>SKILLS</button>
-          <button onClick={handleClick}  className='portfolioSkillButton'>EXPERIENCE</button>
-          <button onClick={handleProjectRefClick} className='portfolioSkillButton'>PROJECTS</button>
-          </div>
-        </div>
+        
         </div>
       </section>
+
+      <div className={`portfolioSkillsDiv ${isSticky ? 'sticky' : ''}`}>
+          <div className='innerSkillsDiv'>
+          <button onClick={handleIntroRefClick} className={`portfolioSkillButton ${activeSection === 'intro' ? 'active' : '' }`}>INTRO</button>
+          <button onClick={handleSkillsRefClick} className={`portfolioSkillButton ${activeSection === 'skills' ? 'active' : '' }`}>SKILLS</button>
+          <button onClick={handleClick}  className={`portfolioSkillButton ${activeSection === 'experience' ? 'active' : ''}`}>EXPERIENCE</button>
+          <button onClick={handleProjectRefClick} className={`portfolioSkillButton ${activeSection === 'projects' ? 'active' : '' }`}>PROJECTS</button>
+          </div>
+        </div>
+
+
         <section ref={skillsRef} className='portfolioSkillSets'>
           <p className='skillSetsText'>SKILL SETS</p>
           <div data-aos='fade-right' className='skillImgAndName'>
             <div className='SkillDescText'>
               {skilsSet.map ((each, index)=><p key={index} className='SkillTextWord'>{each}</p>)}
             </div>
-            <div data-aos='fade-left'>
+            <div data-aos='fade-right'>
             <img src={require('./assests/react.png')} className='ImgSkill' />
             <img src={require('./assests/saas.png')} className='ImgSkill' />
             <img src={require('./assests/dots.png')} className='Imgdots' />
@@ -126,7 +179,7 @@ function App() {
           <p className='skillSetsText'>EXPERIENCE</p>
           <div className='experienceHolder'>
             {experience?.map((each, index)=>(
-            <div  data-aos="flip-left" key={index} className='experienceHolder_div'>
+            <div key={index} className='experienceHolder_div'>
               <p className='experienceCompany_Role'>{each?.name}</p>
               <p className='experienceCompany'>{each?.company}</p>
               <p className='experienceCompany_startDate'>{each?.date}</p>
@@ -148,10 +201,10 @@ function App() {
           <p className='skillSetsText'>PROJECTS</p>
           {videoPortfolioExperience?.map((each, index)=>
           <div key={index} className='videoAndPortfolio'>
-          <video  data-aos="fade-right" className='videoPortfolio' autoPlay playsInline muted loop>
+          <video className='videoPortfolio' autoPlay playsInline muted loop>
             <source  src={each?.video} type="video/mp4"/>
           </video>
-          <div  data-aos="fade-left" className='descVideoPortfolio'>
+          <div className='descVideoPortfolio'>
           <p className='videoTitle'>{each?.name}</p>
           <p className='descVideoTitle'>{each?.descTitle}</p>
           <div className='stacksUsedVideoPorfolio'>

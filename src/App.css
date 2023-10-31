@@ -8,6 +8,7 @@
   background-color: #26252D;
   min-height: 100vh;
   padding: 20px ;
+  position: relative;
 }
 .portfolioHeader{
   display: flex;
@@ -64,6 +65,7 @@
   width: 230px;
   height: 280px;
   border-radius: 50%;
+  z-index: 100;
 }
 .userPicAbout{
   display: flex;
@@ -95,7 +97,19 @@
 .portfolioSkillsDiv{
   margin-top: 20px;
   padding: 15px;
+  position: sticky !important;
+  top: 0;
+  z-index: 200;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
   /* position: relative !important; */
+}
+.portfolioSkillsDiv.sticky {
+  background-color: #26252D; /* Set the background color to green when sticky */
+}
+.portfolioSkillButton.active {
+  background-color: #6845cd;
+  color: white; /* Change text color when active */
 }
 .portfolioSkillButton{
   border: none;
@@ -303,6 +317,9 @@
     margin-top: 10px;
   }
   .userPortfolioName{
+    text-align: center;
+  }
+  .usePortfolioDesc{
     text-align: center;
   }
 }
