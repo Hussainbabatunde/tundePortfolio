@@ -18,20 +18,32 @@ function App() {
     {
     name: 'Software Developer(Frontend web and mobile developer)',
     company:'BCT Limited - Fulltime',
-    date:'Jan 2022 - Present',
+    date:'Jan 2022 - Dec 2023',
     duties:[' Coollaborated effectively with a team of engineers to develop a robust web app (Learning Management System), a platform provides users with the opportunity to enroll in digital courses tailored to their professional goals, all while offering convenient payment options to streamline the registration process and unique feature of one-on-one sessions with experienced tutors. Application was completed using React, CSS, Redux and Rest API.',
             'Coollaborated effectively with a team of engineers to develop a robust web app (Solvate Africa), a freelancing website where users can post jobs and talents can apply for the posted jobs. Application was completed using React, CSS, react bootstrap, Redux and Rest API which currently has over 500 users.',
             'website where users can post jobs and talents can apply for the posted jobs. Application was completed using React, CSS, react bootstrap, Redux and Rest API which currently has over 500 users.',
           'Translated UX and business requirements into elegant code solutions with responsive web design projects in React framework' ]
-  }]
+  },
+  {
+    name: 'Application Developer(Fullstack developer)',
+    company:'Sanlam life Insurance - Fulltime',
+    date:'Jan 2024 - Present',
+    duties:[' Developed a customer-facing mobile application using React Native, achieving over 35,000 downloads on both the App Store and Play Store. The app enables users to view their policies, make payments, provide e-signatures for dispatch vouchers, and track claims.',
+            'Collaborated with a team of engineers to develop a robust NIBSS web application, enabling the organization to create mandates for direct debit from users accounts for premium payments on purchased policies.',
+            'Collaborated with a team of engineers to develop a robust web application that streamlined the upload of group life policies for organizations, ensuring compliance with NAICOM and NIID regulatory standards.',
+          'Translated UX and business requirements into elegant code solutions with responsive web design projects in React framework.',
+        'Developed an online repository application for tracking organizational assets.',
+      'Maintaining internal projects' ]
+  }
+]
 
   const videoPortfolioExperience = [
     {
-      name: 'Solvate Africa',
-      descTitle: 'A freelancing website where users can post jobs so talents that are on the platform can apply for the jobs.',
-      stacks: ['Javascript' ,'React'],
-      links:"https://www.solvateafrica.com/",
-      video: require('./assests/Solvate Africa.mp4')
+      name: 'Serverly',
+      descTitle:'Serverly syncs with your servers to automatically import all your websites and simplify setup, regardless of how many sites you manage',
+      stacks: ['Javascript', 'React'],
+      links: "https://getserverly.com/",
+      video: require('./assests/serverly.mov')
     },
     {
       name: 'Learning Management System',
@@ -41,19 +53,19 @@ function App() {
       video: require('./assests/BCT.mp4')
     },
     {
-      name: 'SmoothRide',
-      descTitle:'A cooperate logistics application where users can request for a ride and a driver is assigned to the user to carry out the request',
-      stacks: ['Javascript', 'React Native'],
-      playstore: "https://play.google.com/store/apps/details?id=com.bcodestech.smfirstapp",
-      video: require('./assests/Smoothride.mp4')
+      name: 'Solvate Africa',
+      descTitle: 'A freelancing website where users can post jobs so talents that are on the platform can apply for the jobs.',
+      stacks: ['Javascript' ,'React'],
+      links:"https://www.solvateafrica.com/",
+      video: require('./assests/Solvate Africa.mp4')
     },
     {
-      name: 'Popat',
-      descTitle:'An event ticketing system where a vendor can create events and users are allowed to buy tickets to the events created. ',
+      name: 'Runnershive',
+      descTitle:'An application which tracks a user run route and assign points to the user based on the distance covered. The points can be used to purchase items in the marketplace.',
       stacks: ['Javascript', 'React Native'],
-      playstore: "https://play.google.com/store/apps/details?id=com.bcodestech.smfirstapp",
-      video: require('./assests/Popat.mp4'),
-      appstore: 'https://apps.apple.com/us/app/popat/id6463745179'
+      // playstore: "https://play.google.com/store/apps/details?id=com.bcodestech.smfirstapp",
+      video: require('./assests/runnershive.mov'),
+      appstore: 'https://apps.apple.com/ng/app/runners-hive/id6736629816'
     }
   ]
 
@@ -134,7 +146,7 @@ useEffect(() => {
           <a target='_blank' href='https://github.com/Hussainbabatunde'><img width='25px' src={require('./assests/github.png')} /></a>
           <a target='_blank' href='https://www.linkedin.com/in/babatunde-hussain-9a1841134/' style={{marginLeft:'15px'}}><img width='25px' src={require('./assests/linkedin.png')} /></a>
         </div>
-        <a target='_blank' href={require('./assests/babatundeCV.pdf')} className='portfolioResume'>RESUME</a>
+        <a target='_blank' href={require('./assests/NewBabatundeCV.pdf')} className='portfolioResume'>RESUME</a>
       </div>
       <section data-aos='zoom-in' ref={introRef} className='portfolioSec1'>
         <img src={require('./assests/circleProfile.png')} className='circleHeader' />
@@ -212,7 +224,8 @@ useEffect(() => {
             <p key={itemIndex} className='stackPortfolio'>{item}</p>
             )}
           </div>
-          {each?.links ? <a href={each?.links} target="_blank" className='linkToVideoPortfolio'>Live</a>: <a href={each?.playstore} target="_blank" className='linkToVideoPortfolio'>Playstore</a> }
+          {each?.links && <a href={each?.links} target="_blank" className='linkToVideoPortfolio'>Live</a>}
+          {each?.playstore &&  <a href={each?.playstore} target="_blank" className='linkToVideoPortfolio'>Playstore</a> }
           {each?.appstore && <a href={each?.appstore} target="_blank" className='linkToVideoPortfolio'>AppStore</a>}
           </div>
           </div>

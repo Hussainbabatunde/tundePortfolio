@@ -182,7 +182,7 @@
 .experienceHolder{
   margin-top: 4%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
 }
@@ -309,6 +309,11 @@
   }
   .experienceHolder_div{
     max-width: 85%;
+  }
+  .experienceHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .innerSkillsDiv{
     flex-wrap: wrap;
